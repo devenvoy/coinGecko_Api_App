@@ -5,10 +5,10 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.flow_retrofit.database.CryptoDatabase
-import com.example.flow_retrofit.model.CryptoRemoteKey
-import com.example.flow_retrofit.model.ResponseCoinsList
-import com.example.flow_retrofit.network.ApiService
+import com.example.flow_retrofit.data.database.CryptoDatabase
+import com.example.flow_retrofit.data.model.CryptoRemoteKey
+import com.example.flow_retrofit.data.model.ResponseCoinsList
+import com.example.flow_retrofit.data.network.ApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

@@ -1,10 +1,10 @@
-package com.example.flow_retrofit.database
+package com.example.flow_retrofit.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.flow_retrofit.model.CryptoRemoteKey
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.CryptoRemoteKey
+import com.example.flow_retrofit.data.model.ResponseCoinsList
 import com.example.flow_retrofit.utils.Converters
 
 @Database(

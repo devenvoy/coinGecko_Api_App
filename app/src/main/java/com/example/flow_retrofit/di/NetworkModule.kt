@@ -1,7 +1,7 @@
 package com.example.flow_retrofit.di
 
 import android.app.TimePickerDialog
-import com.example.flow_retrofit.network.ApiService
+import com.example.flow_retrofit.data.network.ApiService
 import com.example.flow_retrofit.utils.Constants.Companion.BASE_URL
 import com.example.flow_retrofit.utils.Constants.Companion.NETWORK_TIMEOUT
 import com.google.gson.Gson

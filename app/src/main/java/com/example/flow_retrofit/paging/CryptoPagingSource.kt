@@ -2,8 +2,8 @@ package com.example.flow_retrofit.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.flow_retrofit.model.ResponseCoinsList
-import com.example.flow_retrofit.network.ApiService
+import com.example.flow_retrofit.data.model.ResponseCoinsList
+import com.example.flow_retrofit.data.network.ApiService
 
 class CryptoPagingSource(private val apiService: ApiService) :
     PagingSource<Int, ResponseCoinsList.ResponseCoinsListItem>() {

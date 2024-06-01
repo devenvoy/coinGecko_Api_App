@@ -1,4 +1,4 @@
-package com.example.flow_retrofit
+package com.example.flow_retrofit.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
-import com.example.flow_retrofit.adapter.LoaderAdpater
+import com.example.flow_retrofit.data.adapter.LoaderAdpater
 import com.example.flow_retrofit.databinding.FragmentHomeBinding
-import com.example.flow_retrofit.paging.CryptoPagingAdapter
-import com.example.flow_retrofit.viewmodel.MainViewModel
+import com.example.flow_retrofit.paging.adapter.CryptoPagingAdapter
+import com.example.flow_retrofit.data.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.flow_retrofit.model
+package com.example.flow_retrofit.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

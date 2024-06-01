@@ -2,7 +2,7 @@ package com.example.flow_retrofit.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.flow_retrofit.database.CryptoDatabase
+import com.example.flow_retrofit.data.database.CryptoDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

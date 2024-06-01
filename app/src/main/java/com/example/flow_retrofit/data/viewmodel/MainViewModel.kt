@@ -1,10 +1,10 @@
-package com.example.flow_retrofit.viewmodel
+package com.example.flow_retrofit.data.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.cachedIn
-import com.example.flow_retrofit.repository.ApiRepository
+import com.example.flow_retrofit.data.repository.ApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

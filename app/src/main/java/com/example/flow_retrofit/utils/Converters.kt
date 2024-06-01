@@ -1,7 +1,7 @@
 package com.example.flow_retrofit.utils
 
 import androidx.room.TypeConverter
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.ResponseCoinsList
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

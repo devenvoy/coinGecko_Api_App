@@ -1,4 +1,4 @@
-package com.example.flow_retrofit.adapter
+package com.example.flow_retrofit.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.flow_retrofit.R
 import com.example.flow_retrofit.databinding.ItemBinding
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.ResponseCoinsList
 import com.example.flow_retrofit.utils.roundToTwoDecimals
 
 class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {

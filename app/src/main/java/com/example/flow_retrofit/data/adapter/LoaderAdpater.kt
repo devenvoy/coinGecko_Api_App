@@ -1,4 +1,4 @@
-package com.example.flow_retrofit.adapter
+package com.example.flow_retrofit.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

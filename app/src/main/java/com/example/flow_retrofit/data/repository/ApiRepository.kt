@@ -1,12 +1,12 @@
-package com.example.flow_retrofit.repository
+package com.example.flow_retrofit.data.repository
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.flow_retrofit.database.CryptoDatabase
-import com.example.flow_retrofit.model.ResponseCoinsList
-import com.example.flow_retrofit.network.ApiService
+import com.example.flow_retrofit.data.database.CryptoDatabase
+import com.example.flow_retrofit.data.model.ResponseCoinsList
+import com.example.flow_retrofit.data.network.ApiService
 import com.example.flow_retrofit.paging.CryptoPagingSource
 import com.example.flow_retrofit.paging.CryptoRemoteMediator
 import kotlinx.coroutines.flow.Flow

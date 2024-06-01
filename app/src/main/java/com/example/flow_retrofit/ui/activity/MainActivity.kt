@@ -1,4 +1,4 @@
-package com.example.flow_retrofit
+package com.example.flow_retrofit.ui.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

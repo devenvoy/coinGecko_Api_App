@@ -1,6 +1,6 @@
-package com.example.flow_retrofit.network
+package com.example.flow_retrofit.data.network
 
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.ResponseCoinsList
 import com.example.flow_retrofit.utils.Constants.Companion.API_KEY_QUERY
 import com.example.flow_retrofit.utils.Constants.Companion.API_KEY_VALUE
 import retrofit2.Response

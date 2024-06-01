@@ -1,11 +1,11 @@
-package com.example.flow_retrofit.database
+package com.example.flow_retrofit.data.database
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.ResponseCoinsList
 
 @Dao
 interface CryptoDao {

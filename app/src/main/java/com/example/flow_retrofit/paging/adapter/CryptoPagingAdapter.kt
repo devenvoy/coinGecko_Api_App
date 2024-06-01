@@ -1,5 +1,6 @@
-package com.example.flow_retrofit.paging
+package com.example.flow_retrofit.paging.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -8,18 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.flow_retrofit.R
 import com.example.flow_retrofit.databinding.ItemBinding
-import com.example.flow_retrofit.model.ResponseCoinsList
+import com.example.flow_retrofit.data.model.ResponseCoinsList
+import com.example.flow_retrofit.utils.Constants
 import com.example.flow_retrofit.utils.roundToTwoDecimals
+import com.example.flow_retrofit.utils.toDoubleToFloat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CryptoPagingAdapter :
-    PagingDataAdapter<ResponseCoinsList.ResponseCoinsListItem, CryptoPagingAdapter.QuoteViewHolder>(diffCallback = Comparator()) {
+    PagingDataAdapter<ResponseCoinsList.ResponseCoinsListItem, CryptoPagingAdapter.QuoteViewHolder>(
+        diffCallback = Comparator()
+    ) {
 
     class QuoteViewHolder(private val binding: ItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: ResponseCoinsList.ResponseCoinsListItem) {
             binding.apply {
 
-                pageNum.text = item.id
+//                pageNum.text = item.id
 
                 tvName.text = item.name
                 tvPrice.text = buildString {
@@ -35,16 +43,17 @@ class CryptoPagingAdapter :
                     error(R.drawable.cross)
                 }
 
-//                lineChart.gradientFillColors = intArrayOf(
-//                    Color.parseColor("#2a9085"),
-//                    Color.TRANSPARENT
-//                )
-//
-//                lineChart.animation.duration = Constants.animationDuration
-//
-//                val listData = item.sparklineIn7d.price.toDoubleToFloat()
-//                lineChart.animate(listData ?: emptyList())
+                CoroutineScope(Dispatchers.Main).launch {
+                    lineChart.gradientFillColors = intArrayOf(
+                        Color.parseColor("#2a9085"),
+                        Color.TRANSPARENT
+                    )
 
+                    lineChart.animation.duration = Constants.animationDuration
+
+                    val listData = item.sparklineIn7d.price.toDoubleToFloat()
+                    lineChart.animate(listData ?: emptyList())
+                }
             }
         }
     }
