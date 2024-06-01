@@ -1,6 +1,5 @@
 package com.example.flow_retrofit.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -9,18 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.flow_retrofit.R
 import com.example.flow_retrofit.databinding.ItemBinding
-import com.example.flow_retrofit.model.ResponseCoinsListItem
-import com.example.flow_retrofit.utils.Constants.Companion.animationDuration
+import com.example.flow_retrofit.model.ResponseCoinsList
 import com.example.flow_retrofit.utils.roundToTwoDecimals
-import com.example.flow_retrofit.utils.toDoubleToFloat
-import javax.inject.Inject
 
 class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
 
 
     class MyViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(item: ResponseCoinsListItem) {
+        fun onBind(item: ResponseCoinsList.ResponseCoinsListItem) {
             binding.apply {
                 tvName.text = item.name
                 tvPrice.text = buildString {
@@ -35,16 +31,16 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
                     placeholder(R.drawable.bitcoin_logo)
                     error(R.drawable.cross)
                 }
-
-                lineChart.gradientFillColors = intArrayOf(
-                    Color.parseColor("#2a9085"),
-                    Color.TRANSPARENT
-                )
-
-                lineChart.animation.duration = animationDuration
-
-                val listData = item.sparklineIn7d.price.toDoubleToFloat()
-                lineChart.animate(listData)
+//
+//                lineChart.gradientFillColors = intArrayOf(
+//                    Color.parseColor("#2a9085"),
+//                    Color.TRANSPARENT
+//                )
+//
+//                lineChart.animation.duration = animationDuration
+//
+//                val listData = item.sparklineIn7d.price.toDoubleToFloat()
+//                lineChart.animate(listData)
 
             }
         }
@@ -67,17 +63,17 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
         holder.onBind(differ.currentList[position])
     }
 
-    private val differCallBack = object : DiffUtil.ItemCallback<ResponseCoinsListItem>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<ResponseCoinsList.ResponseCoinsListItem>() {
         override fun areItemsTheSame(
-            oldItem: ResponseCoinsListItem,
-            newItem: ResponseCoinsListItem,
+            oldItem: ResponseCoinsList.ResponseCoinsListItem,
+            newItem: ResponseCoinsList.ResponseCoinsListItem,
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: ResponseCoinsListItem,
-            newItem: ResponseCoinsListItem,
+            oldItem: ResponseCoinsList.ResponseCoinsListItem,
+            newItem: ResponseCoinsList.ResponseCoinsListItem,
         ): Boolean {
             return oldItem == newItem
         }

@@ -1,29 +1,25 @@
 package com.example.flow_retrofit.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.PagingDataAdapter
-import androidx.room.util.recursiveFetchLongSparseArray
-import com.example.flow_retrofit.model.ResponseCoinsListItem
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.cachedIn
 import com.example.flow_retrofit.repository.ApiRepository
-import com.example.flow_retrofit.utils.DataStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@ExperimentalPagingApi
 @HiltViewModel
 class MainViewModel
 @Inject constructor(
-    private val repository: ApiRepository,
+    repository: ApiRepository,
 ) : ViewModel() {
 
-    private val _coinList = MutableLiveData<DataStatus<List<ResponseCoinsListItem>>>()
-
-    val coinsList: LiveData<DataStatus<List<ResponseCoinsListItem>>>
-        get() = _coinList
+//    private val _coinList =
+//        MutableLiveData<DataStatus<List<ResponseCoinsList.ResponseCoinsListItem>>>()
+//
+//    val coinsList: LiveData<DataStatus<List<ResponseCoinsList.ResponseCoinsListItem>>>
+//        get() = _coinList
 
 //    fun getCoinList(vs_currency: String) =
 //        viewModelScope.launch {
@@ -34,16 +30,7 @@ class MainViewModel
 
 //    val CryptoList = PagingData<ResponseCoinsListItem>()
 
-    val CryptoList = repository.getCoinListPager()
-
-
-    fun getCryptoList() {
-        viewModelScope.launch {
-//            repository.getCoinListPager().collect{
-////                CryptoList.value = it
-//            }
-        }
-    }
+    val cryptoList = repository.getCoinListPager().cachedIn(viewModelScope)
 
 
 }

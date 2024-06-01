@@ -1,25 +1,24 @@
 package com.example.flow_retrofit
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.flow_retrofit.adapter.CryptoAdapter
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import com.example.flow_retrofit.adapter.LoaderAdpater
 import com.example.flow_retrofit.databinding.FragmentHomeBinding
 import com.example.flow_retrofit.paging.CryptoPagingAdapter
-import com.example.flow_retrofit.utils.DataStatus
-import com.example.flow_retrofit.utils.isVisible
 import com.example.flow_retrofit.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
+@ExperimentalPagingApi
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -27,7 +26,7 @@ class HomeFragment : Fragment() {
 
     private val viewModels: MainViewModel by viewModels()
 
-    private lateinit var cryptoAdapter: CryptoAdapter
+//    private lateinit var cryptoAdapter: CryptoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,13 +78,27 @@ class HomeFragment : Fragment() {
         )
 
         lifecycleScope.launch {
-
-            viewModels.CryptoList.collect {
-
-                pagingAdapter.submitData(lifecycle = lifecycle, pagingData = it)
-
+            pagingAdapter.loadStateFlow.collectLatest { loadStates ->
+                binding.pBarLoading.isVisible = loadStates.refresh is LoadState.Loading
+                binding.errorMsg.isVisible = loadStates.refresh is LoadState.Error
             }
         }
+
+        lifecycleScope.launch {
+            viewModels.cryptoList.collectLatest { pagingData ->
+                pagingAdapter.submitData(pagingData)
+            }
+        }
+
+
+        binding.imgCross.setOnClickListener {
+            pagingAdapter.refresh()
+        }
+
+
+//            viewModels.CryptoList.collect {
+//                pagingAdapter.submitData(lifecycle = lifecycle, pagingData = it)
+//            }
 
 
     }

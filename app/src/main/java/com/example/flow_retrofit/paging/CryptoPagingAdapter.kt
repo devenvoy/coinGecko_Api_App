@@ -1,6 +1,5 @@
 package com.example.flow_retrofit.paging
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -9,17 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.flow_retrofit.R
 import com.example.flow_retrofit.databinding.ItemBinding
-import com.example.flow_retrofit.model.ResponseCoinsListItem
-import com.example.flow_retrofit.utils.Constants
+import com.example.flow_retrofit.model.ResponseCoinsList
 import com.example.flow_retrofit.utils.roundToTwoDecimals
-import com.example.flow_retrofit.utils.toDoubleToFloat
 
 class CryptoPagingAdapter :
-    PagingDataAdapter<ResponseCoinsListItem, CryptoPagingAdapter.QuoteViewHolder>(diffCallback = Comparator()) {
+    PagingDataAdapter<ResponseCoinsList.ResponseCoinsListItem, CryptoPagingAdapter.QuoteViewHolder>(diffCallback = Comparator()) {
 
     class QuoteViewHolder(private val binding: ItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: ResponseCoinsListItem) {
+        fun onBind(item: ResponseCoinsList.ResponseCoinsListItem) {
             binding.apply {
 
                 pageNum.text = item.id
@@ -38,15 +35,15 @@ class CryptoPagingAdapter :
                     error(R.drawable.cross)
                 }
 
-                lineChart.gradientFillColors = intArrayOf(
-                    Color.parseColor("#2a9085"),
-                    Color.TRANSPARENT
-                )
-
-                lineChart.animation.duration = Constants.animationDuration
-
-                val listData = item.sparklineIn7d.price.toDoubleToFloat()
-                lineChart.animate(listData)
+//                lineChart.gradientFillColors = intArrayOf(
+//                    Color.parseColor("#2a9085"),
+//                    Color.TRANSPARENT
+//                )
+//
+//                lineChart.animation.duration = Constants.animationDuration
+//
+//                val listData = item.sparklineIn7d.price.toDoubleToFloat()
+//                lineChart.animate(listData ?: emptyList())
 
             }
         }
@@ -57,10 +54,10 @@ class CryptoPagingAdapter :
         position: Int,
         payloads: MutableList<Any>,
     ) {
-        if (payloads.isNullOrEmpty()) {
+        if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)
         } else {
-            val newItem = payloads[0] as ResponseCoinsListItem
+            val newItem = payloads[0] as ResponseCoinsList.ResponseCoinsListItem
             holder.onBind(newItem)
         }
     }
@@ -84,17 +81,17 @@ class CryptoPagingAdapter :
         )
     }
 
-    class Comparator : DiffUtil.ItemCallback<ResponseCoinsListItem>() {
+    class Comparator : DiffUtil.ItemCallback<ResponseCoinsList.ResponseCoinsListItem>() {
         override fun areItemsTheSame(
-            oldItem: ResponseCoinsListItem,
-            newItem: ResponseCoinsListItem,
+            oldItem: ResponseCoinsList.ResponseCoinsListItem,
+            newItem: ResponseCoinsList.ResponseCoinsListItem,
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: ResponseCoinsListItem,
-            newItem: ResponseCoinsListItem,
+            oldItem: ResponseCoinsList.ResponseCoinsListItem,
+            newItem: ResponseCoinsList.ResponseCoinsListItem,
         ): Boolean {
             return oldItem == newItem
         }
